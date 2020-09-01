@@ -1,0 +1,22 @@
+11 prosjekter:
+
+Elektronikk 101
+
+Arduino
+
+Raspberry Pi
+
+3D Printing
+
+Vinylkutting
+
+Avansert Elektronikk
+
+Laserkutting
+
+CNC maskinering
+
+Andre temaer
+
+Eksamensprosjekt
+
