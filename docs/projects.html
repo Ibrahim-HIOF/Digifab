@@ -124,16 +124,59 @@
 								<video src="videos/ard_video.mp4"  width="400" height="400" controls></video>
 
 								<h3>Raspberry Pi</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-								Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-								Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-								Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								<p>For Raspberry Pi oppgaven valgte jeg å lage trafikklys fordi jeg hadde tidligere jobbet med led lys i Arduino oppgaven. 
+								Det var krevende å jobbe med dette da jeg ikke hadde en skjerm og en tastatur. 
+								Heldigvis ordnet det seg ved å sette opp en VNC.
 								</p>
+
+								<img src="images_RaspberryPi/RaspberryPi4.jpeg" alt="vnc" style="width:400px;height:400px;">
+
+								<p>For å kunne lage trafikklys trenger vi Raspberry Pi mikrokontroller, ledninger, koblingsbrett, 3 LED lys og 3 220Ω resistor for hvert lys.
+								Led lys bør være grønn, rødt og gult for at det skal være realistisk.
+								Man må også kode med python i tillegg. Koden har jeg lagt i mappen prosjektfiler på github.
+								Den er hentet fra forelesningsvideoen, men jeg har gjort noen forandringer på den.
+								Her har jeg satt alt sammen:
+								</p>
+								
+								<img src="images_RaspberryPi/RaspberryPi3.jpeg" alt="Raspberry" style="width:400px;height:400px;">
+
+								<p>Her viser jeg hvordan hvordan det fungerer. For å forstå det som skjer i videoen må jeg forklare hvordan koden fungerer.
+								Det starter med at grønt lys er på. Så går den inn i while-loop. Ved hjelp av sleep modulen kan vi sette koden på pause.
+								Etter 5 sekunder skifter den fra grønt til gult og det går 1 sekund før den skifter fra gult til rødt. 
+								Når den har kommet til rødt lys vil lyset være på i 5 sekunder før den skifter igjen til gult også til grønt.
+								Slik forsetter det til det uendelige til koden er stanset. </p>
+
+								<p>Her er koden og videoen:</p>
+								
+								<pre style="overflow: visible">
+									<code>
+									from gpiozero import TrafficLights
+									from time import sleep
 									
-								<div>
-									<div class="image square fit">
-										<a href="projects.html" class="link"><img src="images/pic04.jpg" alt="" /></a>
-								</div>		
+									led = TrafficLights(2,3,4)
+									
+									led.green.on()
+									
+									on = True
+									
+									while on:
+										sleep(5)
+										led.green.off()
+										led.amber.on()
+										sleep(1)
+										led.amber.off()
+										led.red.on()
+										sleep(5)
+										led.amber.on()
+										sleep(1)
+										led.green.on()
+										led.red.off()
+										led.amber.off()
+									</code>
+								</pre>
+								
+								<video src="videos/RaspberryPi_Video.mp4"  width="400" height="250" controls></video>
+
 							</div> 
 						</div>
 					</section>
